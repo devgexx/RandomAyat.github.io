@@ -1,0 +1,107 @@
+.color1 {
+    background: #2b3e50 none repeat scroll 0 0;
+    border: 3px solid #1c1f25;
+    color: #31b59f;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+.color2 {
+    background: #D9474F none repeat scroll 0 0;
+    border: 3px solid #642431;
+    color: #fff;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+.color3 {
+    background: #F2DCB2 none repeat scroll 0 0;
+    border: 3px solid #E57746;
+    color: #2b3e50;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+.color4 {
+    background: #F1A05B none repeat scroll 0 0;
+    border: 3px solid #D9474F;
+    color: #3F5067;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+.color5 {
+    background: #0CA7D3 none repeat scroll 0 0;
+    border: 3px solid #054C62;
+    color: #FFF;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+.color6 {
+    background: #FFC04A none repeat scroll 0 0;
+    border: 3px solid #614635 ;
+    color: #3D6683;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+.color7 {
+    background: #50AD7C none repeat scroll 0 0;
+    border: 3px solid #387353 ;
+    color: #fff;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+.color8 {
+    background: #614635 none repeat scroll 0 0;
+    border: 3px solid #F2DCB2 ;
+    color: #FFC04A;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+.color9 {
+    background: #FFF none repeat scroll 0 0;
+    border: 3px solid #000;
+    color: #000;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+.color10 {
+    background: #1c1f25 none repeat scroll 0 0;
+    border: 3px solid #ddd;
+    color: #fff;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+.color11 {
+    background: #426C6E none repeat scroll 0 0;
+    border: 3px solid #0D252F;
+    color: #6ABCD0;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+.color12 {
+    background:  #EF8695 none repeat scroll 0 0;
+    border: 3px solid #A65E69;
+    color: #000;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}

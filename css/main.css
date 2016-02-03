@@ -1,0 +1,59 @@
+body{
+  background-color: #F2F1EF;
+
+}
+
+.block{
+  display: table;
+  margin: 0 auto;
+}
+
+.random{
+  color: #33c3f0;
+}
+.ayat{
+  color: #333;
+}
+.v{
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #999;
+    top: -30px;
+    left: -45px;
+    position: relative;
+}
+.container {
+    max-width: 800px;
+}
+.footer{
+  margin-top: 15px;
+  border-top: 1px solid #bbb;
+  padding: 10px 0 50px 0;
+}
+.footer a:link{
+  text-decoration: none;
+}
+.footer a:hover{
+  color: #333;
+}
+.tengah{
+  height: 360px;
+  width: 480px;
+  display: table-cell;
+  vertical-align: middle;
+  padding:10px;
+  text-align: center;
+  font-size: 17px;
+}
+
+.defcolor {
+    background: #D9474F none repeat scroll 0 0;
+    border: 5px solid #642431;
+    color: #fff;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+}
+.fixcol{
+  width: 100%;
+}

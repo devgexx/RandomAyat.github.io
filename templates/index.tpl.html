@@ -1,0 +1,101 @@
+<div class="container block" ng-init="generate();">
+    <center>
+      <i>*click image to regenerate new ayat !</i>
+    </center>
+    <div class="block">
+          <div ng-randomayat class="tengah" id="wow" ng-class="kolor" ng-click="generate();">
+            {{ayat}}<br><br><strong> {{qs}}</strong>
+          </div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="one column">
+        <div class="color1 fixcol" ng-click="ganti('color1')">text</div>
+      </div>
+      <div class="one column">
+        <div class="color2 fixcol" ng-click="ganti('color2')">text</div>
+      </div>
+      <div class="one column">
+        <div class="color3 fixcol" ng-click="ganti('color3')">text</div>
+      </div>
+      <div class="one column">
+        <div class="color4 fixcol" ng-click="ganti('color4')">text</div>
+      </div>
+      <div class="one column">
+        <div class="color5 fixcol" ng-click="ganti('color5')">text</div>
+      </div>
+      <div class="one column">
+        <div class="color6 fixcol" ng-click="ganti('color6')">text</div>
+      </div>
+      <div class="one column">
+        <div class="color7 fixcol" ng-click="ganti('color7')">text</div>
+      </div>
+      <div class="one column">
+        <div class="color8 fixcol" ng-click="ganti('color8')">text</div>
+      </div>
+      <div class="one column">
+        <div class="color9 fixcol" ng-click="ganti('color9')">text</div>
+      </div>
+      <div class="one column">
+        <div class="color10 fixcol" ng-click="ganti('color10')">text</div>
+      </div>
+      <div class="one column">
+        <div class="color11 fixcol" ng-click="ganti('color11')">text</div>
+      </div>
+      <div class="one column">
+        <div class="color12 fixcol" ng-click="ganti('color12')">text</div>
+      </div>
+    </div>
+</div>
+
+
+<div class="container" >
+    <table style="text-align:center;" class="u-full-width">
+        <thead>
+          <tr >
+            <th>Text</th>
+            <th>Border</th>
+            <th>Background</th>
+            <th style="text-align:center;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+                <script src="js/plugins/jscolor.min.js" type="text/javascript-lazy"></script>
+                <button class="jscolor {onFineChange: 'gantitext(this)', value:'FFFFFF'}"
+                    style="border:2px solid black ; width:100px;">
+                </button>
+            </td>
+           <td>
+                <button class="jscolor {onFineChange:'gantiborder(this)', value:'642431'}"
+                    style="border:2px solid black ; width:100px;">
+                </button>
+            </td>
+          <td>
+              <button class="jscolor {onFineChange:'gantibg(this)', value:'D9474F'}"
+                    style="border:2px solid black ; width:100px;">
+              </button>
+          </td>
+            <td>
+              <a class="button button-primary" href="{{imgc}}" download="{{qs}}.png">Download Image</a>
+              <a class="button button-primary" ng-click="shareimg(imgc)">Share Image</a><br>
+
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+</div>
+<script type="text/javascript-lazy">
+function gantitext(jscolor) {
+      document.getElementById('wow').style.color = '#' + jscolor;
+    }
+function gantiborder(jscolor) {
+      document.getElementById('wow').style.borderColor = '#' + jscolor;
+    }
+function gantibg(jscolor) {
+      document.getElementById('wow').style.backgroundColor = '#' + jscolor;
+    }
+</script>
