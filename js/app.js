@@ -158,14 +158,8 @@ app.controller('LiatCtrl', function($window,$routeParams, $http,$location,$scope
         $window.location = "http://upload.randomayat.com/id.php?liat="+id;
         console.log('the user agent is a crawler!');
     }else{
-        $http.get(url).success(function(data) {
-            var img = data.query.results.img;
-            console.log(img.src);
-            $scope.imgpath =  "http://ibin.co/"+$routeParams.id;
-            $scope.pathid = $routeParams.id;
-        }).error(function (data) {
-            alert('Sorrry ! server Down');
-        });
+        $scope.imgpath =  "http://ibin.co/"+$routeParams.id;
+        $scope.pathid = $routeParams.id;
     }
 
 });
