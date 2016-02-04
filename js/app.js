@@ -12,7 +12,7 @@ app.config(function($httpProvider,cfpLoadingBarProvider,$compileProvider,$routeP
       when('/privacy-policy', {templateUrl: 'templates/privacy-policy.tpl.html' }).
       otherwise({redirectTo: '/'});
       $locationProvider.html5Mode(true);
-      //$locationProvider.hashPrefix('!');
+      $locationProvider.hashPrefix('!');
 });
 
 app.run(function($window) {
