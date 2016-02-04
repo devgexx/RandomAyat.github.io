@@ -111,11 +111,11 @@ app.controller('IndexCtrl', function($rootScope, $http,$location, $scope, $sce, 
               $scope.$broadcast('createdimg');
           },100);
       };
-      $scope.shareimg = function (basex,qs,ayat){
+      $scope.shareimg = function (basex){
         var req = {
               method: 'POST',
-              url: 'http://localhost/wow',
-              data: $httpParamSerializerJQLike({'imgbase64': basex, 'qs': qs, 'ayat': ayat}),
+              url: 'http://upload.randoayat.com',
+              data: $httpParamSerializerJQLike({'imgbase64': basex}),
               headers: {'Content-Type': 'application/x-www-form-urlencoded'},
          };
         $http(req).success(function(data){
