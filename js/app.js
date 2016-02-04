@@ -1,17 +1,18 @@
 var app = angular.module('randomayatApp', ['ngRoute','ngAnimate','angular-loading-bar','720kb.socialshare']);
 
-app.config(function($httpProvider,cfpLoadingBarProvider,$compileProvider,$routeProvider) {
+app.config(function($httpProvider,cfpLoadingBarProvider,$compileProvider,$routeProvider, $locationProvider,$provide) {
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
   cfpLoadingBarProvider.spinnerTemplate = '<div class="loading">Loading&#8230;</div>';
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|file|blob):|data:image\//);
 
-
   $routeProvider.
       when('/', {templateUrl: 'templates/index.tpl.html', controller: 'IndexCtrl' }).
       when('/liat-img/:id', {templateUrl: 'templates/liat.tpl.html', controller: 'LiatCtrl' }).
-      when('/about-us', {templateUrl: 'templates/about.tpl.html' }).
+      when('/about-us', {templateUrl: 'templates/about.tpl.html'}).
       when('/privacy-policy', {templateUrl: 'templates/privacy-policy.tpl.html' }).
       otherwise({redirectTo: '/'});
+      $locationProvider.html5Mode(true);
+      //$locationProvider.hashPrefix('!');
 });
 
 app.directive('ngRandomayat',[function(){
@@ -32,6 +33,35 @@ app.directive('ngRandomayat',[function(){
              }
          };
 }]);
+app.run(function($window) {
+  $window.fbAsyncInit = function() {
+    FB.init({
+      appId: '1661318324106310',
+      cookie: true,
+      xfbml: true
+    });
+  };
+      // load the Facebook javascript SDK
+  (function(d){
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js"; ref.parentNode.insertBefore(js, ref);
+  }(document));
+});
+
+
+app.directive('ngKomen', ['$timeout', function($timeout) {
+  //http://stackoverflow.com/questions/23516305/facebook-comment-plugin-angularjs
+   return {
+     restrict: 'A',
+     link: function(scope, elem, attr) {
+       attr.$observe('pageHref', function (newValue) {
+          elem.html('<div class="fb-comments" data-href="'+newValue+'" data-numposts="5"></div>');
+          $timeout(function(){ FB.XFBML.parse(elem[0]);});
+      });
+     }
+   };
+ }]);
 
 app.directive('script', function() {
    return {
@@ -81,11 +111,11 @@ app.controller('IndexCtrl', function($rootScope, $http,$location, $scope, $sce, 
               $scope.$broadcast('createdimg');
           },100);
       };
-      $scope.shareimg = function (basex){
+      $scope.shareimg = function (basex,qs,ayat){
         var req = {
               method: 'POST',
-              url: 'http://upload.randomayat.com/',
-              data: $httpParamSerializerJQLike({'imgbase64': basex}),
+              url: 'http://localhost/wow',
+              data: $httpParamSerializerJQLike({'imgbase64': basex, 'qs': qs, 'ayat': ayat}),
               headers: {'Content-Type': 'application/x-www-form-urlencoded'},
          };
         $http(req).success(function(data){
@@ -119,18 +149,21 @@ app.controller('IndexCtrl', function($rootScope, $http,$location, $scope, $sce, 
 
 });
 
-
-
 app.controller('LiatCtrl', function($routeParams, $http,$location,$scope, $timeout, cfpLoadingBar){
     var id = $routeParams.id;
     var url ="https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22http%3A%2F%2Fpostimg.org%2Fimage%2F"+id+"%22%20and%0A%20%20%20%20%20%20xpath%3D'%2F%2Fhtml%2Fbody%2Fcenter%2Fimg'&format=json&diagnostics=true&callback=";
-    $http.get(url).success(function(data) {
-        var img = data.query.results.img;
-        console.log(img.src);
-        $scope.imgpath =  img.src;
-        $scope.pathid = $routeParams.id;
-    }).error(function (data) {
-        alert('Sorrry ! server Down');
-    });
-
+    var bot = "(googlebot\/|googlebot|crawler|spider|robot|crawling|facebook/i)";
+    var re = new RegExp(bot, 'i');
+    if (re.test(navigator.userAgent)) {
+        console.log('the user agent is a crawler!');
+    }else{
+        $http.get(url).success(function(data) {
+            var img = data.query.results.img;
+            console.log(img.src);
+            $scope.imgpath =  img.src;
+            $scope.pathid = $routeParams.id;
+        }).error(function (data) {
+            alert('Sorrry ! server Down');
+        });
+    }
 });
